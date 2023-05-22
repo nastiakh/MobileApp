@@ -1,4 +1,3 @@
-import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
 import {
   StyleSheet,
@@ -7,6 +6,7 @@ import {
   View,
   Alert,
   Pressable,
+  Image,
 } from "react-native";
 
 export default function Login({ navigation }) {
@@ -18,10 +18,13 @@ export default function Login({ navigation }) {
   };
 
   return (
-    <View style={styles.login}>
-      <Text style={styles.heading1}>Hello</Text>
-      <Text style={styles.heading2}>Welcome to ADHD survey app</Text>
-      {/* <Icon name="email" size={30} color={"#9BE6DE"} /> */}
+    <View style={styles.container}>
+      <Text style={styles.title}>Welcome to</Text>
+      <Text style={styles.title}>ConcentrApp</Text>
+      <Text style={styles.subtitle}>Hope you are well today</Text>
+
+      <Image style={styles.img} source={require("../assets/brain3.png")} />
+
       <TextInput
         style={styles.placeHold}
         placeholder="Experiment number"
@@ -40,38 +43,45 @@ export default function Login({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  login: {
+  container: {
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "column",
-
-    // backgroundColor: "#EFF2AE",
   },
-  heading1: {
+  headings: {
+    flex: 2,
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "column",
+  },
+  title: {
     fontWeight: "bold",
     fontSize: 40,
+    fontFamily: "Cocogoose",
   },
-  heading2: {
+  subtitle: {
     fontWeight: "bold",
-    fontSize: 23,
-    marginTop: 10,
+    fontSize: 16,
+    marginTop: 20,
+    fontFamily: "Cocogoose",
+    color: "#B4B5BF",
+  },
+  inputs: {
+    flex: 2,
   },
   placeHold: {
     marginTop: 16,
     paddingVertical: 10,
     borderWidth: 2,
-    borderColor: "#D3F2AE",
-    borderRadius: 6,
-    backgroundColor: "#D3F2AE",
-    color: "#20232a",
+    borderColor: "#E7F571",
+    borderRadius: 20,
+    backgroundColor: "#E7F571",
     textAlign: "center",
     fontSize: 15,
-    paddingHorizontal: 16,
-    alignContent: "center",
     width: 300,
-    letterSpacing: 0.25,
+    fontFamily: "Cocogoose",
   },
   button: {
     alignItems: "center",
@@ -79,7 +89,7 @@ const styles = StyleSheet.create({
     marginTop: 16,
     paddingVertical: 12,
     paddingHorizontal: 32,
-    borderRadius: 4,
+    borderRadius: 20,
     elevation: 3,
     backgroundColor: "#AE91DA",
   },
@@ -89,5 +99,11 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     letterSpacing: 0.25,
     color: "white",
+    fontFamily: "Cocogoose",
+  },
+  img: {
+    height: 200,
+    width: 200,
+    marginTop: 20,
   },
 });
