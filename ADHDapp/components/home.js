@@ -1,5 +1,12 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Image,
+  SafeAreaView,
+} from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
@@ -24,30 +31,45 @@ const HomePage = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
+      <Text style={styles.title}>ConcentrApp</Text>
+      <Image style={styles.imgTop} source={require("../assets/brain3.png")} />
       <View style={styles.content}>
         <TouchableOpacity
-          style={styles.startButton}
+          style={styles.ButtonStart}
           onPress={() => navigation.navigate("Settings")}
         >
-          <Text style={styles.startButtonText}>Start Questionary</Text>
+          <View style={styles.buttonAlign}>
+            <Text style={styles.ButtonText}>Start</Text>
+            <Image style={styles.img} source={require("../assets/play2.png")} />
+          </View>
         </TouchableOpacity>
+        {/* ////////////////////////////////////////// */}
         <TouchableOpacity
-          style={styles.scoreButton}
+          style={styles.ButtonScore}
           onPress={() => navigation.navigate("Score")}
         >
-          <Text style={styles.scoreButtonText}>Score</Text>
+          <View style={styles.buttonAlign}>
+            <Text style={styles.ButtonText}>Score</Text>
+
+            <Image
+              style={styles.img2}
+              source={require("../assets/score2.png")}
+            />
+          </View>
         </TouchableOpacity>
+
+        {/* ////////////////////////////////////////////// */}
         <TouchableOpacity
-          style={styles.settingsButton}
+          style={styles.ButtonSettings}
           onPress={() => navigation.navigate("Settings")}
         >
-          <Text style={styles.settingsButtonText}>Settings</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.settingsButton}
-          onPress={() => navigation.navigate("PoppingNumbers")}
-        >
-          <Text style={styles.settingsButtonText}>pop</Text>
+          <View style={styles.buttonAlign}>
+            <Text style={styles.ButtonText}>Settings</Text>
+            <Image
+              style={styles.img3}
+              source={require("../assets/settings2.png")}
+            />
+          </View>
         </TouchableOpacity>
       </View>
     </View>
@@ -64,43 +86,74 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     flex: 20,
-    fontFamily: "italic",
   },
-  startButton: {
-    backgroundColor: "#19A7CE",
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    borderRadius: 8,
-    marginVertical: 20,
+  ButtonStart: {
+    justifyContent: "center",
+    // marginTop: 16,
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    borderRadius: 20,
+    elevation: 3,
+    backgroundColor: "#D1DB82",
+    width: 350,
+    height: 100,
   },
-  startButtonText: {
+  ButtonScore: {
+    justifyContent: "center",
+    marginTop: 16,
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    borderRadius: 20,
+    elevation: 3,
+    backgroundColor: "#AE91DA",
+    width: 350,
+    height: 100,
+  },
+  ButtonSettings: {
+    justifyContent: "center",
+    marginTop: 16,
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    borderRadius: 20,
+    elevation: 3,
+    backgroundColor: "#B2B3AC",
+    width: 350,
+    height: 100,
+  },
+  ButtonText: {
     color: "white",
     fontSize: 30,
     fontWeight: "bold",
+    fontFamily: "Cocogoose",
   },
-  scoreButton: {
-    backgroundColor: "#19A7CE",
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    borderRadius: 8,
-    marginVertical: 20,
+  img: {
+    height: 80,
+    width: 80,
+    marginLeft: 145,
   },
-  scoreButtonText: {
-    color: "white",
-    fontSize: 30,
+  img2: {
+    height: 80,
+    width: 80,
+    marginLeft: 130,
+  },
+  img3: {
+    height: 80,
+    width: 80,
+    marginLeft: 90,
+  },
+  buttonAlign: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  imgTop: {
+    height: 200,
+    width: 200,
+    marginTop: 20,
+  },
+  title: {
     fontWeight: "bold",
-  },
-  settingsButton: {
-    backgroundColor: "#19A7CE",
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    borderRadius: 8,
-    marginVertical: 20,
-  },
-  settingsButtonText: {
-    color: "white",
-    fontSize: 30,
-    fontWeight: "bold",
+    fontSize: 40,
+    fontFamily: "Cocogoose",
   },
 });
 
