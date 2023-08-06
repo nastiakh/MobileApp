@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "453260398634",
+    "project_id": "concentrapp-84c92",
+    "storage_bucket": "concentrapp-84c92.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:453260398634:android:dcfa3b240b637c8200b353",
+        "android_client_info": {
+          "package_name": "com.elanas_lab2023.adhdapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "453260398634-v8nuf232fdeseet5oe8sdauel7dc2ijl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCG3iMK-iTo2Pl0V-YMxuPEX66OE15pWEE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "453260398634-v8nuf232fdeseet5oe8sdauel7dc2ijl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

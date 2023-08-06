@@ -1,18 +1,19 @@
 import React from "react";
 import { StyleSheet, Text, View, FlatList } from "react-native";
 
-export default function Context() {
+export default function Question() {
   return (
     <View style={styles.container}>
-      <Text>this is the context question</Text>
+      <Text style={styles.txt}>this is question </Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+  container: {},
+  txt: {
+    // color: "black",
+    fontFamily: "Cocogoose",
+    fontSize: 20,
   },
 });

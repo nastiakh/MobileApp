@@ -1,0 +1,96 @@
+{
+  "decisionTree": [
+    {
+      "id": "1",
+      "description": "question number 1",
+      "created_at": "2023-05-31T11:49:09.273662Z",
+      "updated_at": "2023-05-31T11:49:09.282746Z",
+      "related_ans": "-1",
+      "answers": "answers_time1",
+      "childrens": [
+        {
+          "id": "2",
+          "description": "question number 2 if answer is 1 at question number 1",
+          "created_at": "2023-05-31T11:50:04.609380Z",
+          "updated_at": "2023-05-31T11:50:04.615400Z",
+          "answers": "answers_time2",
+          "related_ans": "11",
+          "childrens": [
+            {
+              "id": "7",
+              "description": "question number 3 if answer is 1 at question number 1",
+              "created_at": "2023-05-31T11:50:11.747726Z",
+              "updated_at": "2023-05-31T11:50:11.752881Z",
+              "answers": "answers_time1",
+              "related_ans": "1",
+              "childrens": []
+            },
+            {
+              "id": "8",
+              "description": "question number 2 if answer is 5 at question number 1",
+              "created_at": "2023-05-31T11:50:11.747726Z",
+              "updated_at": "2023-05-31T11:50:11.752881Z",
+              "answers": "answers_time1",
+              "related_ans": "2",
+              "childrens": []
+            },
+            {
+              "id": "9",
+              "description": "question number 2 if answer is 5 at question number 1",
+              "created_at": "2023-05-31T11:50:11.747726Z",
+              "updated_at": "2023-05-31T11:50:11.752881Z",
+              "answers": "answers_time1",
+              "related_ans": "3",
+              "childrens": []
+            },
+            {
+              "id": "10",
+              "description": "question number 2 if answer is 5 at question number 1",
+              "created_at": "2023-05-31T11:50:11.747726Z",
+              "updated_at": "2023-05-31T11:50:11.752881Z",
+              "answers": "answers_time1",
+              "related_ans": "4",
+              "childrens": []
+            }
+          ]
+        },
+        {
+          "id": "3",
+          "description": "question number 2 if answer is 2 at question number 1",
+          "created_at": "2023-05-31T11:50:11.747726Z",
+          "updated_at": "2023-05-31T11:50:11.752881Z",
+          "answers": "answers_time2",
+          "related_ans": "12",
+          "childrens": []
+        },
+        {
+          "id": "4",
+          "description": "question number 2 if answer is 3 at question number 1",
+          "created_at": "2023-05-31T11:50:11.747726Z",
+          "updated_at": "2023-05-31T11:50:11.752881Z",
+          "answers": "answers_time2",
+          "related_ans": "13",
+          "childrens": []
+        },
+        {
+          "id": 5,
+          "description": "question number 2 if answer is 4 at question number 1",
+          "created_at": "2023-05-31T11:50:11.747726Z",
+          "updated_at": "2023-05-31T11:50:11.752881Z",
+          "answers": "answers_time2",
+          "related_ans": "14",
+          "childrens": []
+        },
+        {
+          "id": 6,
+          "description": "question number 2 if answer is 5 at question number 1",
+          "created_at": "2023-05-31T11:50:11.747726Z",
+          "updated_at": "2023-05-31T11:50:11.752881Z",
+          "answers": "answers_time2",
+          "related_ans": "15",
+          "childrens": []
+        }
+      ]
+    }
+  ]
+}

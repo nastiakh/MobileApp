@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useTheme } from "../../theme/theme_provider";
 import {
   View,
   Text,
@@ -14,8 +15,11 @@ import ConfettiCannon from "react-native-confetti-cannon";
 export default function Thanks({ navigation }) {
   const scaleAnimation = useRef(new Animated.Value(0)).current;
   const opacityAnimation = useRef(new Animated.Value(0)).current;
+  const { dark, colors, setScheme } = useTheme();
 
-  const [score, setScore] = useState(20);
+  const iconAmaze = dark
+    ? require("../../assets/images/amazeNight.png")
+    : require("../../assets/images/amaze.png");
 
   useEffect(() => {
     startAnimation();
@@ -39,19 +43,19 @@ export default function Thanks({ navigation }) {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView
+      style={[styles.container, { backgroundColor: colors.mainBackground }]}
+    >
       <ConfettiCannon count={200} origin={{ x: -10, y: 0 }} />
       <Animated.View
         style={[
           styles.hooray,
+          { backgroundColor: colors.boxcolor },
           { transform: [{ scale: scaleAnimation }], opacity: opacityAnimation },
         ]}
       >
         <Text style={styles.hoorayText}>Great!</Text>
-        <Image
-          style={styles.img}
-          source={require("../../assets/images/amaze.png")}
-        />
+        <Image style={styles.img} source={iconAmaze} />
         <Text>
           <Text style={styles.scoreText}>Here </Text>
           <Text style={styles.scoreNum}>20 </Text>
@@ -60,12 +64,16 @@ export default function Thanks({ navigation }) {
         <Text style={styles.scoreText}>for you</Text>
       </Animated.View>
       <View style={styles.thanksView}>
-        <Text style={styles.txt}>Thank you,</Text>
-        <Text style={styles.txt}>and see you next time!</Text>
+        <Text style={[styles.txt, { color: colors.noQuizText }]}>
+          Thank you,
+        </Text>
+        <Text style={[styles.txt, { color: colors.noQuizText }]}>
+          and see you next time!
+        </Text>
       </View>
       <View style={styles.buttonView}>
         <TouchableOpacity
-          style={styles.button}
+          style={[styles.button, { backgroundColor: colors.greenButton }]}
           onPress={() => navigation.navigate("Home")}
         >
           <Text style={styles.ButtonText}>Back to home screen</Text>
@@ -88,13 +96,13 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   thanksView: {
-    backgroundColor: "#fff",
+    // backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
     marginTop: 40,
   },
   buttonView: {
-    backgroundColor: "#fff",
+    // backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -110,7 +118,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 32,
     borderRadius: 20,
     elevation: 3,
-    backgroundColor: "#D1DB82",
+    // backgroundColor: "#D1DB82",
   },
   ButtonText: {
     fontSize: 16,
