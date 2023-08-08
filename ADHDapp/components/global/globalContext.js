@@ -4,7 +4,7 @@ import * as SecureStore from "expo-secure-store";
 const LoginContext = createContext();
 
 const LoginProvider = ({ children }) => {
-  const [domain, setDomain] = useState("http://localhost:8000/");
+  const [domain, setDomain] = useState("http://10.100.102.10:8000/");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userObj, setUserObj] = useState({});
   const [score, setScore] = useState(0);
@@ -26,6 +26,7 @@ const LoginProvider = ({ children }) => {
     score,
     setScore,
     isExistQuiz,
+    setIsExistQuiz,
     participantCode,
     setParticipantCode,
     experimentCode,

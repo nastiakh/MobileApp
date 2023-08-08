@@ -1,15 +1,16 @@
-import { View, Text, StyleSheet, Image } from "react-native";
+import { Text, StyleSheet, Image } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useTheme } from "../../theme/theme_provider";
 
 export default function Contact({ navigation }) {
-  const { dark, colors, setScheme } = useTheme();
+  const { colors } = useTheme();
   return (
     <SafeAreaView
       style={[styles.container, { backgroundColor: colors.mainBackground }]}
     >
       <Text style={styles.title}>If you have any questions,</Text>
       <Text style={styles.title}>please mail us to</Text>
+      <Text style={styles.title}>EMAquiz@gmail.com</Text>
       <Image
         style={styles.img}
         source={require("../../assets/icons/help.png")}

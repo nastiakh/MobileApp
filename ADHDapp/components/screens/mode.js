@@ -1,12 +1,5 @@
-import React, { useState } from "react";
-import {
-  Text,
-  StyleSheet,
-  View,
-  useColorScheme,
-  Switch,
-  Image,
-} from "react-native";
+import React from "react";
+import { Text, StyleSheet, View, Switch, Image } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useTheme } from "../../theme/theme_provider";
 
@@ -38,11 +31,7 @@ export default function Mode({ Navigation }) {
           <Text style={[styles.text, { color: colors.text }]}>
             The appearance now is in {dark ? "dark" : "light"} mode
           </Text>
-          <Image
-            style={styles.img}
-            // source={require("../../assets/images/sun.png")}
-            source={iconDark}
-          />
+          <Image style={styles.img} source={iconDark} />
           <Text style={[styles.text, { color: colors.text }]}>
             {dark
               ? "Toggle to change to light mode"
@@ -50,18 +39,10 @@ export default function Mode({ Navigation }) {
           </Text>
           <Switch value={dark} onValueChange={toggleTheme} />
         </View>
-        {/* <View style={styles.alignment}>
-          <Image
-            style={styles.img}
-            source={require("../../assets/images/moon.png")}
-          />
-          <Text style={[styles.text, { color: colors.text }]}>Dark</Text>
-        </View> */}
       </View>
     </SafeAreaView>
   );
 }
-// const { dark, colors, setScheme } = useTheme();
 const styles = StyleSheet.create({
   container: {
     flex: 1,

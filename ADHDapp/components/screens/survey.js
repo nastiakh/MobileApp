@@ -2,15 +2,13 @@ import React, { useState, useContext, useEffect } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useTheme } from "../../theme/theme_provider";
 import { LoginContext } from "../global/globalContext";
-import axios from "axios";
+import { DecisionTree } from "../../data";
 import {
   View,
   Text,
   FlatList,
   StyleSheet,
   TouchableOpacity,
-  Pressable,
-  ScrollView,
 } from "react-native";
 
 const Item = ({ item, onPress, backgroundColor, textColor }) => (
@@ -18,18 +16,20 @@ const Item = ({ item, onPress, backgroundColor, textColor }) => (
     onPress={onPress}
     style={[styles.item, { backgroundColor }]}
   >
-    <Text style={[styles.title, { color: textColor }]}>{item.answer}</Text>
+    <Text style={[styles.title, { color: textColor }]}>{item.title}</Text>
   </TouchableOpacity>
 );
 
-function SurveyComposite({ SurveyTree, navigation }) {
+export default function Survey({ navigation }) {
+  const answers = DecisionTree.answers;
   const globalContext = useContext(LoginContext);
-  const { domain, participantCode, experimentCode, context, score, setScore } =
-    globalContext;
+  const { setIsExistQuiz } = globalContext;
   const [tree, setTree] = useState();
   const [error, setError] = useState("");
-  const [currentQuestion, setCurrentQuestion] = useState("");
-  const [answers, setAnswers] = useState("");
+  const [currentQuestion, setCurrentQuestion] = useState(
+    "What was the level of your concentration?"
+  );
+  // const [answers, setAnswers] = useState("");
   const [questionId, setQuestionId] = useState();
   const [selectedId, setSelectedId] = useState();
   const [children, setChildren] = useState();
@@ -37,64 +37,9 @@ function SurveyComposite({ SurveyTree, navigation }) {
   const [isChildren, setIsChildren] = useState(false);
   const { colors } = useTheme();
 
-  useEffect(() => {
-    if (SurveyTree) {
-      setTree(SurveyTree);
-      setCurrentQuestion(SurveyTree.description);
-      setAnswers(SurveyTree.answers);
-      setQuestionId(SurveyTree.id);
-      setChildren(SurveyTree.childrens);
-    }
-  }, [SurveyTree]);
-
-  function postAnswers() {
-    axios
-      .post(`${domain}api/submission/`, {
-        participant: participantCode,
-        context: 4,
-        question: questionId,
-        answer: selectedId,
-      })
-      .then(function (response) {
-        console.log(response);
-        console.log(response.data);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }
-
   function nextPressHandle() {
-    if (selectedId === undefined) {
-      setError("You must pick an answer");
-    }
-    // postAnswers();
-    let newRightChild = null;
-    let newIsChildren = false;
-
-    const keys = Object.keys(children);
-    keys.forEach((key) => {
-      if (tree.childrens[key].related_answer === selectedId) {
-        // setRightChild(SurveyTree.childrens[key]);
-        // console.log(rightChild);
-        // setIsChildren(true);
-        newRightChild = SurveyTree.childrens[key];
-        newIsChildren = true;
-        // newIsChildren =
-      }
-    });
-
-    setRightChild(newRightChild);
-    setIsChildren(newIsChildren);
-
-    // {
-    //   isChildren ? (
-    //     <SurveyComposite SurveyTree={rightChild} navigation={navigation} />
-    //   ) : (
-    //     navigation.navigate("Thanks")
-    //   );
-    // }
-    navigation.navigate("Survey");
+    navigation.navigate("Thanks");
+    setIsExistQuiz(false);
   }
 
   const renderItem = ({ item }) => {
@@ -148,8 +93,6 @@ function SurveyComposite({ SurveyTree, navigation }) {
   );
 }
 
-export default SurveyComposite;
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -191,8 +134,8 @@ const styles = StyleSheet.create({
   title: {
     color: "white",
     // fontFamily: "Cocogoose",
-    fontSize: 17,
     fontWeight: "bold",
+    fontSize: 17,
   },
   buttonView: {
     flex: 2,

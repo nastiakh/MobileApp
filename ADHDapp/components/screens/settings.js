@@ -33,19 +33,6 @@ export default function Settings({ navigation }) {
           />
         </View>
       </TouchableOpacity>
-      {/* <TouchableOpacity
-        style={[styles.greenButton, { backgroundColor: colors.greenButton }]}
-        onPress={() => navigation.navigate("Text Size")}
-      >
-        <View style={styles.buttonAlign}>
-          <Text style={styles.ButtonText}>Text Size</Text>
-
-          <Image
-            style={styles.img2}
-            source={require("../../assets/icons/text-size.png")}
-          />
-        </View>
-      </TouchableOpacity> */}
       <Text style={styles.smallTitle2}> Help</Text>
       <TouchableOpacity
         style={[styles.purpleButton, { backgroundColor: colors.purpleButton }]}

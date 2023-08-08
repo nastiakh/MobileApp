@@ -1,9 +1,9 @@
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { SafeAreaView } from "react-native-safe-area-context";
 import React, { useContext, useState, useRef, useEffect } from "react";
 import { useTheme } from "../../theme/theme_provider";
 import { LoginContext } from "../global/globalContext";
 import * as Notifications from "expo-notifications";
+import Constants from "expo-constants";
 import {
   Image,
   StyleSheet,
@@ -22,32 +22,11 @@ Notifications.setNotificationHandler({
   }),
 });
 
-// async function sendPushNotification(expoPushToken) {
-//   const message = {
-//     to: expoPushToken,
-//     sound: "default",
-//     title: "Original Title",
-//     body: "And here is the body!",
-//     data: { someData: "goes here" },
-//   };
-//
-//   await fetch("https://exp.host/--/api/v2/push/send", {
-//     method: "POST",
-//     headers: {
-//       Accept: "application/json",
-//       "Accept-encoding": "gzip, deflate",
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify(message),
-//   });
-// }
-
 // This provides the ExpoPushToken
 async function registerForPushNotificationsAsync() {
-  let token;
-  token = (await Notifications.getExpoPushTokenAsync()).data;
-
-  // need to send the token to back
+  token = await Notifications.getExpoPushTokenAsync({
+    projectId: Constants.expoConfig.extra.eas.projectId,
+  });
 
   if (Platform.OS === "android") {
     Notifications.setNotificationChannelAsync("default", {
@@ -61,16 +40,15 @@ async function registerForPushNotificationsAsync() {
 }
 
 export default function Login({ navigation }) {
-  // const [experiment, setExperiment] = useState("");
-  // const [participant, setParticipant] = useState("");
   const [error, setError] = useState("");
   const [expoPushToken, setExpoPushToken] = useState("");
   const [notification, setNotification] = useState(false);
 
-  const { dark, colors, setScheme } = useTheme();
+  const { dark, colors } = useTheme();
   const globalContext = useContext(LoginContext);
   const {
     setIsLoggedIn,
+    setIsExistQuiz,
     domain,
     userObj,
     setUserObj,
@@ -80,6 +58,7 @@ export default function Login({ navigation }) {
     experimentCode,
     setExperimentCode,
     context,
+    setContext,
   } = globalContext;
 
   const icon = dark
@@ -99,7 +78,8 @@ export default function Login({ navigation }) {
       Notifications.addNotificationReceivedListener((notification) => {
         setNotification(notification);
 
-        // need to fetch the context id
+        // setContext();
+        // setIsExistQuiz(true);
       });
 
     // This listener is fired whenever a user taps on or interacts with a notification
@@ -132,7 +112,6 @@ export default function Login({ navigation }) {
     })
       .then((res) => {
         if (res.ok) {
-          console.log("notification worked");
           return res.json();
         } else {
           console.log("fail");
@@ -141,6 +120,7 @@ export default function Login({ navigation }) {
       .catch((error) => {
         console.log(error);
       });
+    setContext(1);
   }
 
   function handleLogin() {
@@ -166,7 +146,6 @@ export default function Login({ navigation }) {
       })
       .then((json) => {
         setUserObj(json);
-        setToken(json.token);
         setIsLoggedIn(true);
       })
       .catch((error) => {

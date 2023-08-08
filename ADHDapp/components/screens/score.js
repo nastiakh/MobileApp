@@ -1,11 +1,11 @@
-import React, { useEffect, useRef, useState, useContext } from "react";
+import React, { useEffect, useRef, useContext } from "react";
 import { View, Text, StyleSheet, Animated, Easing } from "react-native";
 import { useTheme } from "../../theme/theme_provider";
 import { LoginContext } from "../global/globalContext";
-import Axios from "axios";
+import axios from "axios";
 
 const Score = ({ navigation }) => {
-  const { dark, colors, setScheme } = useTheme();
+  const { colors } = useTheme();
   const scaleAnimation = useRef(new Animated.Value(0)).current;
   const opacityAnimation = useRef(new Animated.Value(0)).current;
   const globalContext = useContext(LoginContext);
@@ -16,11 +16,11 @@ const Score = ({ navigation }) => {
   }, []);
 
   useEffect(() => {
-    Axios.get(`${domain}api/participantlogin/?code=${participantCode}`).then(
-      (response) => {
+    axios
+      .get(`${domain}api/participantlogin/?code=${participantCode}`)
+      .then((response) => {
         setScore(response.data.data);
-      }
-    );
+      });
   });
 
   const startAnimation = () => {
@@ -39,26 +39,6 @@ const Score = ({ navigation }) => {
       }),
     ]).start();
   };
-
-  // async function showScore() {
-  //   fetch(`${domain}api/participantlogin/?code=${participantCode}`, {
-  //     method: "GET",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //   })
-  //     .then((res) => {
-  //       if (res.ok) {
-  //         console.log("score");
-  //         return res.json();
-  //       } else {
-  //         console.log("fail");
-  //       }
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }
 
   return (
     <View
@@ -88,7 +68,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   hooray: {
-    // backgroundColor: "#AE91DA",
     paddingVertical: 16,
     paddingHorizontal: 24,
     borderRadius: 8,

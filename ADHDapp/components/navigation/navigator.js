@@ -8,20 +8,17 @@ import HomePage from "../screens/home";
 import Score from "../screens/score";
 import Login from "../screens/login";
 import Mode from "../screens/mode";
-import TextSize from "../screens/font_size";
 import Contact from "../screens/contact";
-import Start from "../screens/start";
 import Thanks from "../screens/thanks";
-import Notification from "../notifications/notifications";
 import Quiz from "../screens/quiz";
 import NoQuiz from "../screens/no_avalibale_quiz";
-import Splash from "../screens/splash";
 import Countdown from "../screens/countdown";
+import Survey from "../screens/survey";
 
 const Stack = createNativeStackNavigator();
 
 function Navigator(props) {
-  const { dark, colors, setScheme } = useTheme();
+  const { colors } = useTheme();
 
   const globalContext = useContext(LoginContext);
   const { isLoggedIn, userObj } = globalContext;
@@ -43,11 +40,6 @@ function Navigator(props) {
             component={HomePage}
             options={{ headerShown: false }}
           />
-          {/* <Stack.Screen
-            name="Start"
-            component={Start}
-            options={{ headerShown: false }}
-          /> */}
           <Stack.Screen
             name="Settings"
             component={Settings}
@@ -109,21 +101,6 @@ function Navigator(props) {
             }}
           />
           <Stack.Screen
-            name="Text Size"
-            component={TextSize}
-            options={{
-              title: "Text size",
-              headerStyle: {
-                backgroundColor: colors.header,
-                alignItems: "center",
-              },
-              headerTintColor: "white",
-              headerTitleStyle: {
-                fontFamily: "Cocogoose",
-              },
-            }}
-          />
-          <Stack.Screen
             name="Thanks"
             component={Thanks}
             options={{ headerShown: false }}
@@ -131,6 +108,11 @@ function Navigator(props) {
           <Stack.Screen
             name="Quiz"
             component={Quiz}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Survey"
+            component={Survey}
             options={{ headerShown: false }}
           />
           {/* <Stack.Screen name="Splash" component={Splash}></Stack.Screen> */}

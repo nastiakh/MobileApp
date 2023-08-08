@@ -17,7 +17,7 @@ export const ThemeProvider = (props) => {
     setIsDark(colorScheme == "dark");
   }, [colorScheme]);
 
-  // we will call this method when we want chane the swith button
+  // we will call this method when we want change the switch button
   const defaultTheme = {
     dark: isDark,
     colors: isDark ? darkColors : lightColors,

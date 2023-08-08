@@ -1,31 +1,19 @@
 const answers_time1 = [
   {
     id: 11,
-    title: "In class, learning",
+    title: "Extremely focused",
   },
   {
     id: 12,
-    title: "Independent homework",
+    title: "Average focused",
   },
   {
     id: 13,
-    title: "None of the above",
+    title: "Not focused",
   },
   {
     id: 14,
-    title: "None of the above",
-  },
-  {
-    id: 15,
-    title: "None of the above",
-  },
-  {
-    id: 16,
-    title: "None of the above",
-  },
-  {
-    id: 17,
-    title: "None of the above",
+    title: "Irrelevent to me",
   },
 ];
 
