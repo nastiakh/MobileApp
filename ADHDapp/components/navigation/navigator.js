@@ -12,8 +12,7 @@ import Contact from "../screens/contact";
 import Thanks from "../screens/thanks";
 import Quiz from "../screens/quiz";
 import NoQuiz from "../screens/no_avalibale_quiz";
-import Countdown from "../screens/countdown";
-import Survey from "../screens/survey";
+import SurveyComposite from "../screens/survey_composite";
 
 const Stack = createNativeStackNavigator();
 
@@ -44,14 +43,14 @@ function Navigator(props) {
             name="Settings"
             component={Settings}
             options={{
-              title: "Settings",
+              title: "הגדרות",
               headerStyle: {
                 backgroundColor: colors.header,
                 alignItems: "center",
               },
               headerTintColor: "white",
               headerTitleStyle: {
-                fontFamily: "Cocogoose",
+                fontWeight: "bold",
               },
             }}
           />
@@ -59,14 +58,14 @@ function Navigator(props) {
             name="Score"
             component={Score}
             options={{
-              title: "Score",
+              title: "ניקוד",
               headerStyle: {
                 backgroundColor: colors.header,
                 alignItems: "center",
               },
               headerTintColor: "white",
               headerTitleStyle: {
-                fontFamily: "Cocogoose",
+                fontWeight: "bold",
               },
             }}
           />
@@ -74,14 +73,14 @@ function Navigator(props) {
             name="Contact"
             component={Contact}
             options={{
-              title: "Contact us",
+              title: "צרו קשר",
               headerStyle: {
                 backgroundColor: colors.header,
                 alignItems: "center",
               },
               headerTintColor: "white",
               headerTitleStyle: {
-                fontFamily: "Cocogoose",
+                fontWeight: "bold",
               },
             }}
           />
@@ -89,14 +88,14 @@ function Navigator(props) {
             name="Mode"
             component={Mode}
             options={{
-              title: "Apperance",
+              title: "תצוגה",
               headerStyle: {
                 backgroundColor: colors.header,
                 alignItems: "center",
               },
               headerTintColor: "white",
               headerTitleStyle: {
-                fontFamily: "Cocogoose",
+                fontWeight: "bold",
               },
             }}
           />
@@ -111,19 +110,13 @@ function Navigator(props) {
             options={{ headerShown: false }}
           />
           <Stack.Screen
-            name="Survey"
-            component={Survey}
-            options={{ headerShown: false }}
-          />
-          {/* <Stack.Screen name="Splash" component={Splash}></Stack.Screen> */}
-          <Stack.Screen
             name="NoQuiz"
             component={NoQuiz}
             options={{ headerShown: false }}
           />
           <Stack.Screen
-            name="Countdown"
-            component={Countdown}
+            name="SurveyComposite"
+            component={SurveyComposite}
             options={{ headerShown: false }}
           />
         </>

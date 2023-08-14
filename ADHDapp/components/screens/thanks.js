@@ -15,7 +15,7 @@ import ConfettiCannon from "react-native-confetti-cannon";
 export default function Thanks({ navigation }) {
   const scaleAnimation = useRef(new Animated.Value(0)).current;
   const opacityAnimation = useRef(new Animated.Value(0)).current;
-  const { dark, colors, setScheme } = useTheme();
+  const { dark, colors } = useTheme();
 
   const iconAmaze = dark
     ? require("../../assets/images/amazeNight.png")
@@ -54,21 +54,21 @@ export default function Thanks({ navigation }) {
           { transform: [{ scale: scaleAnimation }], opacity: opacityAnimation },
         ]}
       >
-        <Text style={styles.hoorayText}>Great!</Text>
+        <Text style={styles.hoorayText}>נהדר!</Text>
         <Image style={styles.img} source={iconAmaze} />
         <Text>
-          <Text style={styles.scoreText}>Here </Text>
+          <Text style={styles.scoreText}>הנה </Text>
           <Text style={styles.scoreNum}>20 </Text>
-          <Text style={styles.scoreText}>more points </Text>
+          <Text style={styles.scoreText}>נקודות נוספות</Text>
         </Text>
-        <Text style={styles.scoreText}>for you</Text>
+        <Text style={styles.scoreText}>בשבילך</Text>
       </Animated.View>
       <View style={styles.thanksView}>
         <Text style={[styles.txt, { color: colors.noQuizText }]}>
-          Thank you,
+          תודה רבה,
         </Text>
         <Text style={[styles.txt, { color: colors.noQuizText }]}>
-          and see you next time!
+          נתראה בפעם הבאה!
         </Text>
       </View>
       <View style={styles.buttonView}>
@@ -76,7 +76,7 @@ export default function Thanks({ navigation }) {
           style={[styles.button, { backgroundColor: colors.greenButton }]}
           onPress={() => navigation.navigate("Home")}
         >
-          <Text style={styles.ButtonText}>Back to home screen</Text>
+          <Text style={styles.ButtonText}>חזרה למסך הבית</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
@@ -96,19 +96,17 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   thanksView: {
-    // backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
     marginTop: 40,
   },
   buttonView: {
-    // backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
   },
   txt: {
     fontSize: 20,
-    fontFamily: "Cocogoose",
+    fontWeight: "bold",
   },
   button: {
     alignItems: "center",
@@ -118,14 +116,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: 32,
     borderRadius: 20,
     elevation: 3,
-    // backgroundColor: "#D1DB82",
   },
   ButtonText: {
     fontSize: 16,
     lineHeight: 21,
     letterSpacing: 0.25,
     color: "white",
-    fontFamily: "Cocogoose",
+    fontWeight: "bold",
   },
   hooray: {
     backgroundColor: "#dddddd",
@@ -137,12 +134,12 @@ const styles = StyleSheet.create({
   hoorayText: {
     fontSize: 24,
     color: "white",
-    fontFamily: "Cocogoose",
+    fontWeight: "bold",
   },
   scoreText: {
     fontSize: 18,
     marginTop: 5,
-    fontFamily: "Cocogoose",
+    fontWeight: "bold",
     color: "white",
     alignContent: "center",
   },

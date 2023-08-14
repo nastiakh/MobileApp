@@ -27,7 +27,7 @@ const HomePage = ({ navigation }) => {
         >
           <View style={styles.buttonAlign}>
             <Text style={[styles.ButtonText, { color: colors.text }]}>
-              Start
+              התחל
             </Text>
             <Image
               style={styles.img}
@@ -41,7 +41,7 @@ const HomePage = ({ navigation }) => {
         >
           <View style={styles.buttonAlign}>
             <Text style={[styles.ButtonText, { color: colors.text }]}>
-              Score
+              ניקוד
             </Text>
 
             <Image
@@ -59,7 +59,7 @@ const HomePage = ({ navigation }) => {
         >
           <View style={styles.buttonAlign}>
             <Text style={[styles.ButtonText, { color: colors.text }]}>
-              Settings
+              הגדרות
             </Text>
             <Image
               style={styles.img3}
@@ -75,7 +75,7 @@ const HomePage = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // backgroundColor: "#fff",
+
     alignItems: "center",
     justifyContent: "center",
   },
@@ -95,7 +95,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 32,
     borderRadius: 20,
     elevation: 3,
-    // backgroundColor: "#D1DB82",
     width: "90%",
     height: "20%",
   },
@@ -106,7 +105,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 32,
     borderRadius: 20,
     elevation: 3,
-    backgroundColor: "#AE91DA",
     width: "90%",
     height: "20%",
   },
@@ -117,32 +115,31 @@ const styles = StyleSheet.create({
     paddingHorizontal: 32,
     borderRadius: 20,
     elevation: 3,
-    backgroundColor: "#B2B3AC",
     width: "90%",
     height: "20%",
   },
   ButtonText: {
     color: "white",
     fontSize: 30,
-    fontFamily: "Cocogoose",
+    fontWeight: "bold",
   },
   img: {
     height: 60,
     width: 60,
-    marginLeft: 150,
+    marginRight: 120,
   },
   img2: {
     height: 60,
     width: 60,
-    marginLeft: 135,
+    marginRight: 125,
   },
   img3: {
     height: 60,
     width: 60,
-    marginLeft: 95,
+    marginRight: 100,
   },
   buttonAlign: {
-    flexDirection: "row",
+    flexDirection: "row-reverse",
     alignItems: "center",
     justifyContent: "space-around",
   },

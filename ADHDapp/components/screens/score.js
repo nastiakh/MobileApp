@@ -51,9 +51,9 @@ const Score = ({ navigation }) => {
           { transform: [{ scale: scaleAnimation }], opacity: opacityAnimation },
         ]}
       >
-        <Text style={styles.hoorayText}>Hooray!</Text>
+        <Text style={styles.hoorayText}>הידד!</Text>
         <Text>
-          <Text style={styles.scoreText}>Your Score is </Text>
+          <Text style={styles.scoreText}>הניקוד שלך הוא </Text>
           <Text style={styles.scoreNum}>{score}</Text>
         </Text>
       </Animated.View>
@@ -76,12 +76,12 @@ const styles = StyleSheet.create({
   hoorayText: {
     fontSize: 24,
     color: "white",
-    fontFamily: "Cocogoose",
+    fontWeight: "bold",
   },
   scoreText: {
     fontSize: 18,
     marginTop: 16,
-    fontFamily: "Cocogoose",
+    fontWeight: "bold",
     color: "white",
     alignContent: "center",
   },

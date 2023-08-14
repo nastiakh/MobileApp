@@ -8,6 +8,7 @@ import { Platform, Appearance, useColorScheme, StyleSheet } from "react-native";
 import * as Notifications from "expo-notifications";
 import { StatusBar } from "expo-status-bar"; // automatically switches bar style based on theme!
 import { ThemeProvider } from "./theme/theme_provider";
+// import HomePage from "./components/screens/settings";
 
 const App = () => {
   const [fontsLoaded] = useFonts({
@@ -18,6 +19,9 @@ const App = () => {
   // const isDarkMode = useColorScheme() === "dark";
 
   return (
+    // <SafeAreaProvider>
+    //   <HomePage />
+    // </SafeAreaProvider>
     <SafeAreaProvider>
       <LoginProvider>
         <ThemeProvider>

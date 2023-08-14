@@ -140,7 +140,7 @@ export default function Login({ navigation }) {
         if (res.ok) {
           return res.json();
         } else {
-          setError("Your experiment ID or participant ID is false");
+          setError("מספר הניסוי או מספר המשתמש שלך שגוי");
           throw res.json();
         }
       })
@@ -160,13 +160,13 @@ export default function Login({ navigation }) {
     >
       <View style={styles.titlesView}>
         <Text style={[styles.title, { color: colors.concentrappText }]}>
-          Welcome to
+          ברוכים הבאים אל
         </Text>
         <Text style={[styles.title, { color: colors.concentrappText }]}>
           ConcentrApp
         </Text>
         <Text style={[styles.subtitle, { color: colors.loginSubtitle }]}>
-          Hope you are well today
+          מקווים שהיום שלכם נפלא
         </Text>
       </View>
       <View style={styles.imgView}>
@@ -183,7 +183,7 @@ export default function Login({ navigation }) {
       >
         <TextInput
           style={[styles.input, { color: colors.loginInputTextColor }]}
-          placeholder="Expiriment ID"
+          placeholder="הכנס את מספר הניסוי שלך"
           value={experimentCode}
           onChangeText={(text) => setExperimentCode(text)}
         />
@@ -199,7 +199,7 @@ export default function Login({ navigation }) {
       >
         <TextInput
           style={[styles.input, { color: colors.loginInputTextColor }]}
-          placeholder="Participant ID"
+          placeholder="הכנס את מספר המשתמש שלך"
           value={participantCode}
           onChangeText={(text) => setParticipantCode(text)}
         />
@@ -213,7 +213,7 @@ export default function Login({ navigation }) {
           // sendTokenToServer();
         }}
       >
-        <Text style={styles.buttonText}>Login</Text>
+        <Text style={styles.buttonText}>כניסה</Text>
       </TouchableOpacity>
     </SafeAreaView>
   );
@@ -231,17 +231,25 @@ const styles = StyleSheet.create({
     borderColor: "#AE91DA",
     backgroundColor: "white",
     marginTop: 10,
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: "row-reverse",
+    // alignItems: "center",
   },
   input: {
     padding: 10,
     width: "100%",
-    // fontFamily: "Cocogoose",
     fontSize: 13,
-    // color: "black",
     alignItems: "center",
     fontWeight: "bold",
+    flexDirection: "row-reverse",
+  },
+  input2: {
+    padding: 10,
+    width: "18%",
+    // marginRight: 100,
+    fontSize: 13,
+    alignItems: "center",
+    fontWeight: "bold",
+    flexDirection: "row-reverse",
   },
   button: {
     alignItems: "center",
@@ -254,20 +262,22 @@ const styles = StyleSheet.create({
     backgroundColor: "#D1DB82",
   },
   buttonText: {
-    fontFamily: "Cocogoose",
     color: "white",
+    fontWeight: "bold",
+    fontSize: 17,
   },
   titlesView: {
     alignItems: "center",
   },
   title: {
     fontSize: 40,
-    fontFamily: "Cocogoose",
+    fontWeight: "bold",
   },
   subtitle: {
     fontSize: 16,
     marginTop: 20,
-    fontFamily: "Cocogoose",
+    // fontFamily: "Cocogoose",
+    fontWeight: "bold",
     color: "#B4B5BF",
   },
   imgView: {
@@ -280,9 +290,10 @@ const styles = StyleSheet.create({
   },
   error: {
     textAlign: "center",
-    fontFamily: "Cocogoose",
+    // fontFamily: "Cocogoose",
     color: "#D12121",
-    fontSize: 12,
+    fontWeight: "bold",
+    fontSize: 14,
     marginTop: 10,
   },
 });

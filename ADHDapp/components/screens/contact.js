@@ -8,8 +8,8 @@ export default function Contact({ navigation }) {
     <SafeAreaView
       style={[styles.container, { backgroundColor: colors.mainBackground }]}
     >
-      <Text style={styles.title}>If you have any questions,</Text>
-      <Text style={styles.title}>please mail us to</Text>
+      <Text style={styles.title}>אם יש לכם שאלות</Text>
+      <Text style={styles.title}>בבקשה שלחו למייל</Text>
       <Text style={styles.title}>EMAquiz@gmail.com</Text>
       <Image
         style={styles.img}
@@ -30,13 +30,12 @@ const styles = StyleSheet.create({
   img: {
     height: 200,
     width: 200,
-    marginTop: 20,
+    marginTop: 50,
   },
   title: {
     fontWeight: "bold",
     fontSize: 23,
     marginTop: 20,
-    fontFamily: "Cocogoose",
     color: "#B4B5BF",
   },
 });

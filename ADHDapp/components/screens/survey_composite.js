@@ -9,8 +9,6 @@ import {
   FlatList,
   StyleSheet,
   TouchableOpacity,
-  Pressable,
-  ScrollView,
 } from "react-native";
 
 const Item = ({ item, onPress, backgroundColor, textColor }) => (
@@ -22,10 +20,12 @@ const Item = ({ item, onPress, backgroundColor, textColor }) => (
   </TouchableOpacity>
 );
 
-function SurveyComposite({ SurveyTree, navigation }) {
+function SurveyComposite({ navigation, SurveyTree }) {
   const globalContext = useContext(LoginContext);
-  const { domain, participantCode, experimentCode, context, score, setScore } =
+  const { domain, participantCode, experimentCode, context, setIsExistQuiz } =
     globalContext;
+  const [currentSurveyTree, setCurrentSurveyTree] = useState(SurveyTree);
+
   const [tree, setTree] = useState();
   const [error, setError] = useState("");
   const [currentQuestion, setCurrentQuestion] = useState("");
@@ -33,19 +33,26 @@ function SurveyComposite({ SurveyTree, navigation }) {
   const [questionId, setQuestionId] = useState();
   const [selectedId, setSelectedId] = useState();
   const [children, setChildren] = useState();
-  const [rightChild, setRightChild] = useState(null);
-  const [isChildren, setIsChildren] = useState(false);
+
   const { colors } = useTheme();
 
   useEffect(() => {
-    if (SurveyTree) {
-      setTree(SurveyTree);
-      setCurrentQuestion(SurveyTree.description);
-      setAnswers(SurveyTree.answers);
-      setQuestionId(SurveyTree.id);
-      setChildren(SurveyTree.childrens);
+    if (!currentSurveyTree) {
+      setCurrentSurveyTree(SurveyTree);
     }
-  }, [SurveyTree]);
+  }, [SurveyTree, currentSurveyTree]);
+
+  useEffect(() => {
+    if (currentSurveyTree) {
+      console.log("in use effect", currentSurveyTree);
+      setTree(currentSurveyTree);
+      setCurrentQuestion(currentSurveyTree.description);
+      setAnswers(currentSurveyTree.answers);
+      setQuestionId(currentSurveyTree.id);
+      setChildren(currentSurveyTree.childrens);
+    }
+  }, [currentSurveyTree]);
+  console.log(currentQuestion);
 
   function postAnswers() {
     axios
@@ -69,32 +76,22 @@ function SurveyComposite({ SurveyTree, navigation }) {
       setError("You must pick an answer");
     }
     // postAnswers();
-    let newRightChild = null;
-    let newIsChildren = false;
 
+    // find the right question to display with the correct related answer
     const keys = Object.keys(children);
+    let isChildren = false;
+    let rightChild = null;
     keys.forEach((key) => {
       if (tree.childrens[key].related_answer === selectedId) {
-        // setRightChild(SurveyTree.childrens[key]);
-        // console.log(rightChild);
-        // setIsChildren(true);
-        newRightChild = SurveyTree.childrens[key];
-        newIsChildren = true;
-        // newIsChildren =
+        isChildren = true;
+        rightChild = { ...SurveyTree.childrens[key] };
       }
     });
-
-    setRightChild(newRightChild);
-    setIsChildren(newIsChildren);
-
-    // {
-    //   isChildren ? (
-    //     <SurveyComposite SurveyTree={rightChild} navigation={navigation} />
-    //   ) : (
-    //     navigation.navigate("Thanks")
-    //   );
-    // }
-    navigation.navigate("Survey");
+    if (!isChildren) {
+      navigation.navigate("Thanks");
+    } else if (rightChild) {
+      setCurrentSurveyTree(rightChild);
+    }
   }
 
   const renderItem = ({ item }) => {
@@ -139,7 +136,7 @@ function SurveyComposite({ SurveyTree, navigation }) {
           onPress={nextPressHandle}
         >
           <View style={styles.buttonAlign}>
-            <Text style={styles.ButtonText}>Next</Text>
+            <Text style={styles.ButtonText}>הבא</Text>
           </View>
         </TouchableOpacity>
       </View>
@@ -172,7 +169,6 @@ const styles = StyleSheet.create({
   },
   questionText: {
     color: "white",
-    // fontFamily: "Cocogoose",
     fontWeight: "bold",
     fontSize: 30,
   },
@@ -190,7 +186,6 @@ const styles = StyleSheet.create({
   },
   title: {
     color: "white",
-    // fontFamily: "Cocogoose",
     fontSize: 17,
     fontWeight: "bold",
   },
@@ -211,7 +206,7 @@ const styles = StyleSheet.create({
   ButtonText: {
     color: "white",
     fontSize: 20,
-    fontFamily: "Cocogoose",
+    fontWeight: "bold",
   },
   buttonAlign: {
     flexDirection: "row",

@@ -19,7 +19,7 @@ export default function Mode({ Navigation }) {
       style={[styles.container, { backgroundColor: colors.mainBackground }]}
     >
       <Text style={[styles.title, { color: colors.mainTitle }]}>
-        Choose your preferable Appearance
+        בחרו בתצוגה המועדפת עליכם
       </Text>
       <View
         style={[
@@ -29,13 +29,13 @@ export default function Mode({ Navigation }) {
       >
         <View style={styles.alignment}>
           <Text style={[styles.text, { color: colors.text }]}>
-            The appearance now is in {dark ? "dark" : "light"} mode
+            התצוגה היא כעת במצב {dark ? "לילה" : "יום"}
           </Text>
           <Image style={styles.img} source={iconDark} />
           <Text style={[styles.text, { color: colors.text }]}>
             {dark
-              ? "Toggle to change to light mode"
-              : "toggle to change to dark mode"}
+              ? "הזז את המתג כדי לשנות למצב יום"
+              : "הזז את המתג כדי לשנות למצב לילה"}
           </Text>
           <Switch value={dark} onValueChange={toggleTheme} />
         </View>
@@ -50,24 +50,21 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   title: {
-    fontFamily: "Cocogoose",
-    fontSize: 17,
+    fontWeight: "bold",
+    fontSize: 25,
     marginBottom: 50,
   },
   secondContainer: {
     flexDirection: "row",
-    // backgroundColor: "#B8AFAF",
     borderRadius: 20,
   },
   text: {
-    fontFamily: "Cocogoose",
+    fontWeight: "bold",
     fontSize: 15,
     margin: 20,
   },
   alignment: {
-    // flexDirection: "column",
     alignItems: "center",
-    // margin: 30,
   },
   img: {
     height: 100,

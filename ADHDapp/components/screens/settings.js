@@ -19,13 +19,13 @@ export default function Settings({ navigation }) {
     <SafeAreaView
       style={[styles.container, { backgroundColor: colors.mainBackground }]}
     >
-      <Text style={styles.smallTitle1}>Preferences</Text>
+      <Text style={styles.smallTitle1}>העדפות</Text>
       <TouchableOpacity
         style={[styles.greenButton, { backgroundColor: colors.greenButton }]}
         onPress={() => navigation.navigate("Mode")}
       >
         <View style={styles.buttonAlign}>
-          <Text style={styles.ButtonText}>Appearance</Text>
+          <Text style={styles.ButtonText}>תצוגה</Text>
 
           <Image
             style={styles.img1}
@@ -33,13 +33,13 @@ export default function Settings({ navigation }) {
           />
         </View>
       </TouchableOpacity>
-      <Text style={styles.smallTitle2}> Help</Text>
+      <Text style={styles.smallTitle2}> עזרה</Text>
       <TouchableOpacity
         style={[styles.purpleButton, { backgroundColor: colors.purpleButton }]}
         onPress={() => navigation.navigate("Contact")}
       >
         <View style={styles.buttonAlign}>
-          <Text style={styles.ButtonText}>Contact us</Text>
+          <Text style={styles.ButtonText}>צרו קשר</Text>
 
           <Image
             style={styles.img3}
@@ -47,13 +47,13 @@ export default function Settings({ navigation }) {
           />
         </View>
       </TouchableOpacity>
-      <Text style={styles.smallTitle2}>Options</Text>
+      <Text style={styles.smallTitle2}>אפשרויות</Text>
       <TouchableOpacity
         style={[styles.greyButton, { backgroundColor: colors.greyButton }]}
         onPress={handleLogout}
       >
         <View style={styles.buttonAlign}>
-          <Text style={styles.ButtonText}>Log out</Text>
+          <Text style={styles.ButtonText}>התנתקות</Text>
 
           <Image
             style={styles.img4}
@@ -71,15 +71,15 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   smallTitle1: {
-    fontSize: 16,
-    fontFamily: "Cocogoose_light",
+    fontSize: 18,
     color: "#B4B5BF",
+    marginRight: 10,
   },
   smallTitle2: {
-    fontSize: 16,
+    fontSize: 18,
     marginTop: 20,
-    fontFamily: "Cocogoose_light",
     color: "#B4B5BF",
+    marginRight: 10,
   },
   purpleButton: {
     justifyContent: "center",
@@ -88,7 +88,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 32,
     borderRadius: 20,
     elevation: 3,
-    // backgroundColor: "#AE91DA",
     width: "98%",
     height: "15%",
   },
@@ -99,7 +98,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 32,
     borderRadius: 20,
     elevation: 3,
-    // backgroundColor: "#D1DB82",
     width: "98%",
     height: "15%",
   },
@@ -110,38 +108,37 @@ const styles = StyleSheet.create({
     paddingHorizontal: 32,
     borderRadius: 20,
     elevation: 3,
-    // backgroundColor: "#B2B3AC",
     width: "98%",
     height: "15%",
   },
   buttonAlign: {
-    flexDirection: "row",
+    flexDirection: "row-reverse",
     alignItems: "center",
     justifyContent: "space-around",
   },
   ButtonText: {
     color: "white",
     fontSize: 30,
-    fontFamily: "Cocogoose",
+    fontWeight: "bold",
   },
   img1: {
     height: 60,
     width: 60,
-    marginLeft: 27,
+    marginRight: 160,
   },
-  img2: {
-    height: 60,
-    width: 60,
-    marginLeft: 95,
-  },
+  // img2: {
+  //   height: 60,
+  //   width: 60,
+  //   marginRight: 100,
+  // },
   img3: {
     height: 60,
     width: 60,
-    marginLeft: 55,
+    marginRight: 120,
   },
   img4: {
     height: 60,
     width: 60,
-    marginLeft: 120,
+    marginRight: 110,
   },
 });

@@ -1,7 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
-import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
+import { StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { DecisionTree } from "../../data.js";
 import SurveyComposite from "./survey_composite";
 import { useTheme } from "../../theme/theme_provider";
 import { LoginContext } from "../global/globalContext";
@@ -15,6 +14,7 @@ export default function Quiz({ navigation }) {
     globalContext;
   const [decisionTree, setDecisionTree] = useState();
 
+  // getting the questionary from the DB
   const getData = async () => {
     try {
       await axios
@@ -27,9 +27,8 @@ export default function Quiz({ navigation }) {
           }
         )
         .then((response) => {
-          // const result = convertToQA(data.data[0]);
+          console.log("res", response);
           setDecisionTree(response.data.data[0]);
-          setDecisionTree(result);
         });
     } catch {
       console.log("fail in fetching decision tree");
@@ -49,6 +48,10 @@ export default function Quiz({ navigation }) {
       ) : (
         <NoQuiz navigation={navigation} />
       )}
+
+      {/* {isExistQuiz && decisionTree
+        ? navigation.navigate("SurveyComposite", decisionTree)
+        : navigation.navigate("NoQuiz")} */}
     </SafeAreaView>
   );
 }

@@ -14,10 +14,10 @@ export default function NoQuiz({ navigation }) {
       style={[styles.container, { backgroundColor: colors.mainBackground }]}
     >
       <Text style={[styles.txt, { color: colors.noQuizText }]}>
-        There is no available{" "}
+        כרגע לא קיים{" "}
       </Text>
       <Text style={[styles.txt, { color: colors.noQuizText }]}>
-        quiz at the moment{" "}
+        שאלון זמין{" "}
       </Text>
       <Image style={styles.img} source={iconSad} />
       <View style={styles.buttonView}>
@@ -25,7 +25,7 @@ export default function NoQuiz({ navigation }) {
           style={[styles.button, { backgroundColor: colors.greenButton }]}
           onPress={() => navigation.navigate("Home")}
         >
-          <Text style={styles.ButtonText}>Back to home screen</Text>
+          <Text style={styles.ButtonText}>חזרה למסך הבית</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
@@ -47,17 +47,11 @@ const styles = StyleSheet.create({
   },
   txt: {
     fontSize: 20,
-    fontFamily: "Cocogoose",
+    fontWeight: "bold",
   },
   buttonView: {
-    // flex: 1,
-    // backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
-  },
-  txt: {
-    fontSize: 20,
-    fontFamily: "Cocogoose",
   },
   button: {
     alignItems: "center",
@@ -67,13 +61,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 32,
     borderRadius: 20,
     elevation: 3,
-    // backgroundColor: "#D1DB82",
   },
   ButtonText: {
     fontSize: 16,
     lineHeight: 21,
     letterSpacing: 0.25,
     color: "white",
-    fontFamily: "Cocogoose",
+    fontWeight: "bold",
   },
 });
